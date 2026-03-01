@@ -1,107 +1,89 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-
-<title>Free Student CV Builder | Create Modern Resume Online</title>
-
-<meta name="description" content="Create a free modern student CV or resume online. Perfect for fresh graduates and first job applicants. Download PDF instantly. No watermark.">
-
-<meta name="keywords" content="student CV builder, free resume maker, modern resume template, first job CV, internship resume">
-
-<meta name="author" content="Md Sadikur Rahman Shadhin">
-
-<meta property="og:title" content="Free Student CV Builder">
-<meta property="og:description" content="Create modern CV online and download instantly.">
-<meta property="og:type" content="website">
-
-<meta name="robots" content="index, follow">
-
-<link rel="canonical" href="https://yourdomain.com/">
-
+<title>Modern Student CV Builder</title>
 <link rel="stylesheet" href="style.css">
-
-<!-- Schema Markup -->
-<script type="application/ld+json">
-{
-  "@context": "https://schema.org",
-  "@type": "WebApplication",
-  "name": "Free Student CV Builder",
-  "url": "https://yourdomain.com",
-  "applicationCategory": "BusinessApplication",
-  "operatingSystem": "All",
-  "offers": {
-    "@type": "Offer",
-    "price": "0",
-    "priceCurrency": "USD"
-  }
-}
-</script>
-
+<script src="https://cdnjs.cloudflare.com/ajax/libs/html2pdf.js/0.10.1/html2pdf.bundle.min.js"></script>
 </head>
 
 <body>
 
-<header>
-<h1>Free Student CV Builder</h1>
-<p>Create a modern resume for your first job</p>
-</header>
+<div class="builder">
 
-<main class="container">
+<div class="form">
 
-<section class="form-section">
-<h2>Create Your Resume</h2>
+<h2>Fill Your Information</h2>
 
-<label>Full Name</label>
-<input type="text" id="name" placeholder="Your Name">
+<input type="text" id="name" placeholder="Full Name">
+<input type="text" id="title" placeholder="Student / Career Title">
+<input type="file" id="photo">
 
-<label>Career Title</label>
-<input type="text" id="title" placeholder="Web Developer">
+<textarea id="profile" placeholder="Profile Description"></textarea>
 
-<label>Career Objective</label>
-<textarea id="objective" placeholder="Write your objective"></textarea>
+<input type="text" id="phone" placeholder="Phone">
+<input type="email" id="email" placeholder="Email">
+<input type="text" id="address" placeholder="Address">
 
-<label>Education</label>
-<input type="text" id="education">
+<textarea id="education" placeholder="Education Details"></textarea>
+<textarea id="language" placeholder="Languages"></textarea>
+<textarea id="skills" placeholder="Computer Skills"></textarea>
+<textarea id="experience" placeholder="Work Experience"></textarea>
 
-<label>Skills</label>
-<input type="text" id="skills">
-
-<label>Project</label>
-<input type="text" id="project">
-
-<button onclick="generateCV()">Generate Resume</button>
+<button onclick="generateCV()">Generate CV</button>
 <button onclick="downloadPDF()">Download PDF</button>
 
-</section>
+</div>
 
-<section class="cv-preview" id="cv">
-<h2 id="cv-name">Your Name</h2>
-<h3 id="cv-title">Career Title</h3>
 
-<h4>Objective</h4>
-<p id="cv-objective"></p>
+<div class="cv" id="cv">
 
-<h4>Education</h4>
+<div class="top">
+<div class="photo">
+<img id="cv-photo" src="https://via.placeholder.com/150">
+</div>
+<div class="top-text">
+<h1 id="cv-name">YOUR NAME</h1>
+<h3 id="cv-title">Student</h3>
+</div>
+</div>
+
+<div class="content">
+
+<div class="left">
+<h2>PROFILE</h2>
+<p id="cv-profile"></p>
+
+<h2>CONTACT ME</h2>
+<p id="cv-phone"></p>
+<p id="cv-email"></p>
+<p id="cv-address"></p>
+</div>
+
+<div class="right">
+
+<h2>EDUCATION</h2>
 <p id="cv-education"></p>
 
-<h4>Skills</h4>
+<h2>LANGUAGE</h2>
+<p id="cv-language"></p>
+
+<h2>COMPUTER SKILLS</h2>
 <p id="cv-skills"></p>
 
-<h4>Project</h4>
-<p id="cv-project"></p>
-</section>
+<h2>WORK EXPERIENCE</h2>
+<p id="cv-experience"></p>
 
-</main>
+</div>
 
-<footer>
-<p>© 2026 Md Sadikur Rahman Shadhin | Free Resume Builder</p>
-</footer>
+</div>
 
-<script src="https://cdnjs.cloudflare.com/ajax/libs/html2pdf.js/0.10.1/html2pdf.bundle.min.js" defer></script>
-<script src="script.js" defer></script>
+</div>
+
+</div>
+
+<script src="script.js"></script>
 
 </body>
 </html>
