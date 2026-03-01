@@ -1,96 +1,180 @@
-document.addEventListener("input",()=>{updateCV();saveData();});
+document.addEventListener("DOMContentLoaded", function () {
 
-function updateCV(){
+    // AUTO UPDATE
+    document.addEventListener("input", function () {
+        updateCV();
+        saveData();
+    });
 
-cvName.textContent=name.value||"YOUR NAME";
-cvTitle.textContent=title.value||"Student";
-cvProfile.textContent=profile.value;
-cvPhone.textContent=phone.value;
-cvEmail.textContent=email.value;
-cvAddress.textContent=address.value;
-
-// EDUCATION
-cvEducation.innerHTML="";
-document.querySelectorAll("#education-section .edu").forEach(e=>{
-if(e.children[0].value.trim())
-cvEducation.innerHTML+=`<p><strong>${e.children[0].value}</strong><br>${e.children[1].value}</p>`;
+    loadData();
 });
 
-// LANGUAGE
-cvLanguage.innerHTML="";
-document.querySelectorAll("#language-section input").forEach(l=>{
-if(l.value.trim()) cvLanguage.innerHTML+=`<li>${l.value}</li>`;
-});
+function updateCV() {
 
-// SKILLS
-cvSkills.innerHTML="";
-document.querySelectorAll("#skill-section input").forEach(s=>{
-if(s.value.trim()) cvSkills.innerHTML+=`<li>${s.value}</li>`;
-});
+    // BASIC
+    document.getElementById("cv-name").textContent =
+        document.getElementById("name").value || "YOUR NAME";
 
-// EXPERIENCE
-cvExperience.innerHTML="";
-document.querySelectorAll("#experience-section .exp").forEach(e=>{
-if(e.children[0].value.trim())
-cvExperience.innerHTML+=`<p><strong>${e.children[0].value}</strong><br>${e.children[1].value}</p>`;
-});
+    document.getElementById("cv-title").textContent =
+        document.getElementById("title").value || "Student";
 
-// PHOTO
-const file=document.getElementById("photo").files[0];
-if(file){
-const reader=new FileReader();
-reader.onload=e=>{cvPhoto.src=e.target.result;}
-reader.readAsDataURL(file);
+    document.getElementById("cv-profile").textContent =
+        document.getElementById("profile").value;
+
+    document.getElementById("cv-phone").textContent =
+        document.getElementById("phone").value;
+
+    document.getElementById("cv-email").textContent =
+        document.getElementById("email").value;
+
+    document.getElementById("cv-address").textContent =
+        document.getElementById("address").value;
+
+
+    // EDUCATION
+    const eduOutput = document.getElementById("cv-education");
+    eduOutput.innerHTML = "";
+
+    document.querySelectorAll("#education-section .edu").forEach(block => {
+        const inst = block.querySelector("input").value;
+        const desc = block.querySelector("textarea").value;
+
+        if (inst.trim() !== "") {
+            eduOutput.innerHTML += `
+                <p><strong>${inst}</strong><br>${desc}</p>
+            `;
+        }
+    });
+
+
+    // LANGUAGE
+    const langOutput = document.getElementById("cv-language");
+    langOutput.innerHTML = "";
+
+    document.querySelectorAll("#language-section input").forEach(input => {
+        if (input.value.trim() !== "") {
+            langOutput.innerHTML += `<li>${input.value}</li>`;
+        }
+    });
+
+
+    // SKILLS
+    const skillOutput = document.getElementById("cv-skills");
+    skillOutput.innerHTML = "";
+
+    document.querySelectorAll("#skill-section input").forEach(input => {
+        if (input.value.trim() !== "") {
+            skillOutput.innerHTML += `<li>${input.value}</li>`;
+        }
+    });
+
+
+    // EXPERIENCE
+    const expOutput = document.getElementById("cv-experience");
+    expOutput.innerHTML = "";
+
+    document.querySelectorAll("#experience-section .exp").forEach(block => {
+        const inst = block.querySelector("input").value;
+        const desc = block.querySelector("textarea").value;
+
+        if (inst.trim() !== "") {
+            expOutput.innerHTML += `
+                <p><strong>${inst}</strong><br>${desc}</p>
+            `;
+        }
+    });
+
+
+    // PHOTO
+    const file = document.getElementById("photo").files[0];
+
+    if (file) {
+        const reader = new FileReader();
+        reader.onload = function (e) {
+            document.getElementById("cv-photo").src = e.target.result;
+        };
+        reader.readAsDataURL(file);
+    }
 }
+
+
+// ===== ADD FUNCTIONS =====
+
+function addEducation() {
+    const div = document.createElement("div");
+    div.className = "edu";
+    div.innerHTML = `
+        <input placeholder="Institution Name">
+        <textarea placeholder="Description"></textarea>
+    `;
+    document.getElementById("education-section").appendChild(div);
 }
 
-function addEducation(){
-const d=document.createElement("div");
-d.className="edu";
-d.innerHTML='<input placeholder="Institution Name"><textarea placeholder="Description"></textarea>';
-education-section.appendChild(d);
+function addLanguage() {
+    const container = document.getElementById("language-section");
+
+    if (container.querySelectorAll("input").length >= 5) return;
+
+    const input = document.createElement("input");
+    input.placeholder = "Language";
+    container.appendChild(input);
 }
 
-function addLanguage(){
-if(document.querySelectorAll("#language-section input").length>=5)return;
-const i=document.createElement("input");
-i.placeholder="Language";
-language-section.appendChild(i);
+function addSkill() {
+    const input = document.createElement("input");
+    input.placeholder = "Skill";
+    document.getElementById("skill-section").appendChild(input);
 }
 
-function addSkill(){
-const i=document.createElement("input");
-i.placeholder="Skill";
-skill-section.appendChild(i);
+function addExperience() {
+    const div = document.createElement("div");
+    div.className = "exp";
+    div.innerHTML = `
+        <input placeholder="Institution Name">
+        <textarea placeholder="Description"></textarea>
+    `;
+    document.getElementById("experience-section").appendChild(div);
 }
 
-function addExperience(){
-const d=document.createElement("div");
-d.className="exp";
-d.innerHTML='<input placeholder="Institution Name"><textarea placeholder="Description"></textarea>';
-experience-section.appendChild(d);
+
+// ===== SAVE SYSTEM =====
+
+function saveData() {
+
+    const data = {
+        name: document.getElementById("name").value,
+        title: document.getElementById("title").value,
+        profile: document.getElementById("profile").value,
+        phone: document.getElementById("phone").value,
+        email: document.getElementById("email").value,
+        address: document.getElementById("address").value
+    };
+
+    localStorage.setItem("cvData", JSON.stringify(data));
 }
 
-function saveData(){
-localStorage.setItem("cvData",JSON.stringify({
-name:name.value,title:title.value,profile:profile.value,
-phone:phone.value,email:email.value,address:address.value
-}));
+function loadData() {
+
+    const saved = JSON.parse(localStorage.getItem("cvData") || "{}");
+
+    document.getElementById("name").value = saved.name || "";
+    document.getElementById("title").value = saved.title || "";
+    document.getElementById("profile").value = saved.profile || "";
+    document.getElementById("phone").value = saved.phone || "";
+    document.getElementById("email").value = saved.email || "";
+    document.getElementById("address").value = saved.address || "";
+
+    updateCV();
 }
 
-window.onload=()=>{
-const data=JSON.parse(localStorage.getItem("cvData")||"{}");
-name.value=data.name||"";title.value=data.title||"";
-profile.value=data.profile||"";phone.value=data.phone||"";
-email.value=data.email||"";address.value=data.address||"";
-updateCV();
-}
 
-function downloadPDF(){
-html2pdf().set({
-margin:0,
-filename:"Student_CV.pdf",
-html2canvas:{scale:3},
-jsPDF:{unit:"mm",format:"a4",orientation:"portrait"}
-}).from(document.getElementById("cv")).save();
+// ===== PDF =====
+
+function downloadPDF() {
+    html2pdf().set({
+        margin: 0,
+        filename: "Student_CV.pdf",
+        html2canvas: { scale: 3 },
+        jsPDF: { unit: "mm", format: "a4", orientation: "portrait" }
+    }).from(document.getElementById("cv")).save();
 }
