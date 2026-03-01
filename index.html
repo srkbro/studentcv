@@ -3,56 +3,42 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Premium CV Builder</title>
-
+<title>Free Premium Student CV Builder | Create Modern Resume Online</title>
+<meta name="description" content="Create a free modern student CV online with premium animated design. Auto live update, perfect A4 PDF download included.">
+<meta name="keywords" content="student CV builder, resume maker, free CV creator, modern resume template">
+<meta name="author" content="Md Sadikur Rahman Shadhin">
+<meta name="robots" content="index, follow">
+<link rel="canonical" href="https://srkbro.github.io/">
+<link rel="icon" type="image/png" href="favicon.png">
 <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600;700&display=swap" rel="stylesheet">
 <link rel="stylesheet" href="style.css">
+<script src="https://cdnjs.cloudflare.com/ajax/libs/html2pdf.js/0.10.1/html2pdf.bundle.min.js"></script>
 </head>
-
 <body>
 
 <div class="container">
 
 <div class="form">
-
 <h2>Build Your CV</h2>
-
 <input type="text" id="name" placeholder="Full Name">
 <input type="text" id="title" placeholder="Career Title">
 <input type="file" id="photo">
-
-<h3>Profile</h3>
 <textarea id="profile" placeholder="Profile Description"></textarea>
-
-<h3>Contact</h3>
 <input type="text" id="phone" placeholder="Phone">
 <input type="email" id="email" placeholder="Email">
 <input type="text" id="address" placeholder="Address">
-
-<h3>Education</h3>
 <div id="education-section"></div>
 <button onclick="addEducation()">+ Add Education</button>
-
-<h3>Language</h3>
 <div id="language-section"></div>
 <button onclick="addLanguage()">+ Add Language</button>
-
-<h3>Computer Skills</h3>
 <div id="skill-section"></div>
 <button onclick="addSkill()">+ Add Skill</button>
-
-<h3>Work Experience</h3>
 <div id="experience-section"></div>
 <button onclick="addExperience()">+ Add Experience</button>
-
-<button class="generate" onclick="generateCV()">Generate CV</button>
-
+<button onclick="downloadPDF()">Download PDF</button>
 </div>
 
-
-
 <div class="cv" id="cv">
-
 <div class="header">
 <div class="photo-box">
 <img id="cv-photo" src="https://via.placeholder.com/180">
@@ -64,39 +50,28 @@
 </div>
 
 <div class="main">
-
 <div class="left">
-
 <h2>PROFILE</h2>
 <p id="cv-profile"></p>
-
-<h2>CONTACT ME</h2>
+<h2>CONTACT</h2>
 <p id="cv-phone"></p>
 <p id="cv-email"></p>
 <p id="cv-address"></p>
-
 </div>
 
 <div class="right">
-
 <h2>EDUCATION</h2>
 <div id="cv-education"></div>
-
 <h2>LANGUAGE</h2>
 <ul id="cv-language"></ul>
-
 <h2>COMPUTER SKILLS</h2>
 <ul id="cv-skills"></ul>
-
 <h2>WORK EXPERIENCE</h2>
 <div id="cv-experience"></div>
-
+</div>
 </div>
 
 </div>
-
-</div>
-
 </div>
 
 <script src="script.js"></script>
