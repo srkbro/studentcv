@@ -1,0 +1,107 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<title>Free Student CV Builder | Create Modern Resume Online</title>
+
+<meta name="description" content="Create a free modern student CV or resume online. Perfect for fresh graduates and first job applicants. Download PDF instantly. No watermark.">
+
+<meta name="keywords" content="student CV builder, free resume maker, modern resume template, first job CV, internship resume">
+
+<meta name="author" content="Md Sadikur Rahman Shadhin">
+
+<meta property="og:title" content="Free Student CV Builder">
+<meta property="og:description" content="Create modern CV online and download instantly.">
+<meta property="og:type" content="website">
+
+<meta name="robots" content="index, follow">
+
+<link rel="canonical" href="https://yourdomain.com/">
+
+<link rel="stylesheet" href="style.css">
+
+<!-- Schema Markup -->
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "WebApplication",
+  "name": "Free Student CV Builder",
+  "url": "https://yourdomain.com",
+  "applicationCategory": "BusinessApplication",
+  "operatingSystem": "All",
+  "offers": {
+    "@type": "Offer",
+    "price": "0",
+    "priceCurrency": "USD"
+  }
+}
+</script>
+
+</head>
+
+<body>
+
+<header>
+<h1>Free Student CV Builder</h1>
+<p>Create a modern resume for your first job</p>
+</header>
+
+<main class="container">
+
+<section class="form-section">
+<h2>Create Your Resume</h2>
+
+<label>Full Name</label>
+<input type="text" id="name" placeholder="Your Name">
+
+<label>Career Title</label>
+<input type="text" id="title" placeholder="Web Developer">
+
+<label>Career Objective</label>
+<textarea id="objective" placeholder="Write your objective"></textarea>
+
+<label>Education</label>
+<input type="text" id="education">
+
+<label>Skills</label>
+<input type="text" id="skills">
+
+<label>Project</label>
+<input type="text" id="project">
+
+<button onclick="generateCV()">Generate Resume</button>
+<button onclick="downloadPDF()">Download PDF</button>
+
+</section>
+
+<section class="cv-preview" id="cv">
+<h2 id="cv-name">Your Name</h2>
+<h3 id="cv-title">Career Title</h3>
+
+<h4>Objective</h4>
+<p id="cv-objective"></p>
+
+<h4>Education</h4>
+<p id="cv-education"></p>
+
+<h4>Skills</h4>
+<p id="cv-skills"></p>
+
+<h4>Project</h4>
+<p id="cv-project"></p>
+</section>
+
+</main>
+
+<footer>
+<p>© 2026 Md Sadikur Rahman Shadhin | Free Resume Builder</p>
+</footer>
+
+<script src="https://cdnjs.cloudflare.com/ajax/libs/html2pdf.js/0.10.1/html2pdf.bundle.min.js" defer></script>
+<script src="script.js" defer></script>
+
+</body>
+</html>
