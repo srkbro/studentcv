@@ -1,3 +1,34 @@
+function addEducation(){
+const div = document.createElement("div");
+div.innerHTML = `
+<input placeholder="Institution Name">
+<textarea placeholder="Description"></textarea>
+`;
+document.getElementById("education-section").appendChild(div);
+}
+
+function addLanguage(){
+if(document.querySelectorAll("#language-section input").length>=5) return;
+const input = document.createElement("input");
+input.placeholder="Language";
+document.getElementById("language-section").appendChild(input);
+}
+
+function addSkill(){
+const input = document.createElement("input");
+input.placeholder="Skill";
+document.getElementById("skill-section").appendChild(input);
+}
+
+function addExperience(){
+const div = document.createElement("div");
+div.innerHTML = `
+<input placeholder="Institution Name">
+<textarea placeholder="Description"></textarea>
+`;
+document.getElementById("experience-section").appendChild(div);
+}
+
 function generateCV(){
 
 document.getElementById("cv-name").textContent =
@@ -18,17 +49,29 @@ document.getElementById("email").value;
 document.getElementById("cv-address").textContent =
 document.getElementById("address").value;
 
-document.getElementById("cv-education").textContent =
-document.getElementById("education").value;
+const eduDiv = document.getElementById("cv-education");
+eduDiv.innerHTML="";
+document.querySelectorAll("#education-section div").forEach(e=>{
+eduDiv.innerHTML+=`<p><strong>${e.children[0].value}</strong><br>${e.children[1].value}</p>`;
+});
 
-document.getElementById("cv-language").textContent =
-document.getElementById("language").value;
+const langUl = document.getElementById("cv-language");
+langUl.innerHTML="";
+document.querySelectorAll("#language-section input").forEach(l=>{
+langUl.innerHTML+=`<li>${l.value}</li>`;
+});
 
-document.getElementById("cv-skills").textContent =
-document.getElementById("skills").value;
+const skillUl = document.getElementById("cv-skills");
+skillUl.innerHTML="";
+document.querySelectorAll("#skill-section input").forEach(s=>{
+skillUl.innerHTML+=`<li>${s.value}</li>`;
+});
 
-document.getElementById("cv-experience").textContent =
-document.getElementById("experience").value;
+const expDiv = document.getElementById("cv-experience");
+expDiv.innerHTML="";
+document.querySelectorAll("#experience-section div").forEach(e=>{
+expDiv.innerHTML+=`<p><strong>${e.children[0].value}</strong><br>${e.children[1].value}</p>`;
+});
 
 const file = document.getElementById("photo").files[0];
 if(file){
@@ -38,14 +81,4 @@ document.getElementById("cv-photo").src = e.target.result;
 }
 reader.readAsDataURL(file);
 }
-}
-
-function downloadPDF(){
-const element = document.getElementById("cv");
-html2pdf().set({
-margin:0,
-filename:'Premium_CV.pdf',
-html2canvas:{scale:2},
-jsPDF:{unit:'mm',format:'a4',orientation:'portrait'}
-}).from(element).save();
 }
