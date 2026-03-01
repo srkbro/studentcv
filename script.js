@@ -1,44 +1,33 @@
 document.addEventListener("input", updateCV);
 
 function updateCV(){
+
 document.getElementById("cv-name").textContent =
 document.getElementById("name").value || "YOUR NAME";
+
 document.getElementById("cv-title").textContent =
 document.getElementById("title").value || "Student";
+
 document.getElementById("cv-profile").textContent =
 document.getElementById("profile").value;
+
 document.getElementById("cv-phone").textContent =
 document.getElementById("phone").value;
+
 document.getElementById("cv-email").textContent =
 document.getElementById("email").value;
+
 document.getElementById("cv-address").textContent =
 document.getElementById("address").value;
-}
 
-function addEducation(){
-const div=document.createElement("div");
-div.innerHTML='<input placeholder="Institution Name"><textarea placeholder="Description"></textarea>';
-document.getElementById("education-section").appendChild(div);
+const file = document.getElementById("photo").files[0];
+if(file){
+const reader = new FileReader();
+reader.onload = function(e){
+document.getElementById("cv-photo").src = e.target.result;
 }
-
-function addLanguage(){
-const container=document.getElementById("language-section");
-if(container.querySelectorAll("input").length>=5)return;
-const input=document.createElement("input");
-input.placeholder="Language";
-container.appendChild(input);
+reader.readAsDataURL(file);
 }
-
-function addSkill(){
-const input=document.createElement("input");
-input.placeholder="Skill";
-document.getElementById("skill-section").appendChild(input);
-}
-
-function addExperience(){
-const div=document.createElement("div");
-div.innerHTML='<input placeholder="Institution Name"><textarea placeholder="Description"></textarea>';
-document.getElementById("experience-section").appendChild(div);
 }
 
 function downloadPDF(){
