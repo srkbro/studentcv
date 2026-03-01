@@ -1,70 +1,152 @@
 body{
-font-family: Arial;
 margin:0;
-background:#eee;
+font-family:'Montserrat', sans-serif;
+background:#e6e6e6;
 }
 
 .builder{
 display:flex;
+min-height:100vh;
 }
 
+/* FORM SIDE */
 .form{
 width:35%;
-padding:20px;
 background:white;
-height:100vh;
+padding:25px;
 overflow:auto;
 }
 
-.form input, .form textarea{
-width:100%;
-margin-bottom:10px;
-padding:8px;
+.form h2{
+margin-bottom:20px;
 }
 
+.form input,
+.form textarea{
+width:100%;
+padding:10px;
+margin-bottom:12px;
+border:1px solid #ddd;
+border-radius:5px;
+font-family:inherit;
+}
+
+.form button{
+padding:12px;
+margin-right:10px;
+border:none;
+background:#4b443f;
+color:white;
+cursor:pointer;
+border-radius:5px;
+}
+
+/* CV SIDE */
 .cv{
 width:65%;
 background:white;
 }
 
-.top{
+/* HEADER */
+.header{
 display:flex;
 align-items:center;
 background:#4b443f;
 color:white;
-padding:40px;
+padding:50px;
 }
 
-.photo img{
-width:150px;
-height:150px;
-border-radius:20px;
+.photo-box{
+width:180px;
+height:180px;
+border-radius:25px;
+overflow:hidden;
+border:6px solid white;
+}
+
+.photo-box img{
+width:100%;
+height:100%;
 object-fit:cover;
-border:5px solid white;
 }
 
-.top-text{
-margin-left:40px;
+.header-text{
+margin-left:50px;
 }
 
-.content{
+.header-text h1{
+font-size:38px;
+letter-spacing:3px;
+margin:0;
+font-weight:700;
+}
+
+.header-text h3{
+margin-top:10px;
+font-weight:400;
+opacity:0.8;
+}
+
+/* MAIN CONTENT */
+.main{
 display:flex;
 }
 
 .left{
 width:40%;
-background:#5a5a5a;
+background:#5c5c5c;
 color:white;
-padding:30px;
+padding:40px;
 }
 
 .right{
 width:60%;
-padding:30px;
-background:#f5f5f5;
+padding:40px;
+background:#f4f4f4;
 }
 
 h2{
-letter-spacing:2px;
-margin-top:30px;
+font-size:16px;
+letter-spacing:3px;
+margin-top:35px;
+margin-bottom:15px;
+}
+
+p{
+line-height:1.6;
+}
+
+/* RESPONSIVE */
+@media(max-width:900px){
+
+.builder{
+flex-direction:column;
+}
+
+.form{
+width:100%;
+height:auto;
+}
+
+.cv{
+width:100%;
+}
+
+.header{
+flex-direction:column;
+text-align:center;
+}
+
+.header-text{
+margin-left:0;
+margin-top:20px;
+}
+
+.main{
+flex-direction:column;
+}
+
+.left, .right{
+width:100%;
+}
 }
