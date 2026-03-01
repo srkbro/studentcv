@@ -17,6 +17,7 @@ display:flex;
 flex-wrap:wrap;
 }
 
+/* FORM */
 .form{
 width:30%;
 padding:20px;
@@ -48,23 +49,27 @@ color:white;
 cursor:pointer;
 }
 
-/* CV A4 LOCK */
+/* CV LOCKED A4 */
 .cv{
 width:794px;
-height:1123px;   /* LOCKED SINGLE PAGE */
-background:white;
+height:1123px;
 margin:20px auto;
+background:white;
 box-shadow:0 20px 50px rgba(0,0,0,0.3);
 overflow:hidden;
+display:flex;
+flex-direction:column;
 }
 
-/* HEADER */
+/* HEADER FIXED */
 .header{
+height:260px;
 display:flex;
 align-items:center;
 padding:50px;
 background:linear-gradient(135deg,#667eea,#764ba2);
 color:white;
+flex-shrink:0;
 }
 
 .photo-box{
@@ -82,30 +87,30 @@ height:100%;
 object-fit:cover;
 }
 
-/* MAIN LAYOUT */
+/* MAIN FULL HEIGHT */
 .main{
+flex:1;
 display:flex;
-align-items:flex-start;
 }
 
-/* LEFT SIDE */
+/* LEFT FULL HEIGHT */
 .left-section{
 width:35%;
-padding:40px;
 background:#5c5c5c;
 color:white;
+padding:40px;
 box-sizing:border-box;
-overflow:hidden;
+height:100%;
 }
 
-/* RIGHT SIDE */
+/* RIGHT FULL HEIGHT */
 .right-section{
 width:65%;
-padding:40px;
 background:#f4f4f4;
 color:#333;
+padding:40px;
 box-sizing:border-box;
-overflow:hidden;
+height:100%;
 }
 
 /* TEXT SAFETY */
