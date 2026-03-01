@@ -1,0 +1,122 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<title>Free Student CV Builder | Professional Resume Maker</title>
+<meta name="description" content="Create a professional student CV online with fixed background layout, auto update, multi-section support and perfect A4 PDF download.">
+<meta name="keywords" content="student CV builder, resume maker, free CV creator, modern resume template">
+<meta name="robots" content="index, follow">
+<link rel="canonical" href="https://srkbro.github.io/">
+
+<link rel="icon" href="favicon.png">
+<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600;700&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+<link rel="stylesheet" href="style.css">
+
+<script src="https://cdnjs.cloudflare.com/ajax/libs/html2pdf.js/0.10.1/html2pdf.bundle.min.js"></script>
+
+<script type="application/ld+json">
+{
+ "@context": "https://schema.org",
+ "@type": "WebApplication",
+ "name": "Free Student CV Builder",
+ "applicationCategory": "BusinessApplication",
+ "operatingSystem": "All",
+ "offers": { "@type": "Offer", "price": "0", "priceCurrency": "USD" }
+}
+</script>
+
+</head>
+<body>
+
+<div class="container">
+
+<div class="form">
+<h2>Build Your CV</h2>
+
+<input type="text" id="name" placeholder="Full Name">
+<input type="text" id="title" placeholder="Career Title">
+<input type="file" id="photo">
+
+<textarea id="profile" placeholder="Profile Description"></textarea>
+
+<input type="text" id="phone" placeholder="Phone">
+<input type="email" id="email" placeholder="Email">
+<input type="text" id="address" placeholder="Address">
+
+<h3>Education</h3>
+<div id="education-section"></div>
+<button onclick="addEducation()">+ Add Education</button>
+
+<h3>Language (Max 5)</h3>
+<div id="language-section"></div>
+<button onclick="addLanguage()">+ Add Language</button>
+
+<h3>Computer Skills</h3>
+<div id="skill-section"></div>
+<button onclick="addSkill()">+ Add Skill</button>
+
+<h3>Work Experience</h3>
+<div id="experience-section"></div>
+<button onclick="addExperience()">+ Add Experience</button>
+
+<button onclick="downloadPDF()">Download PDF</button>
+</div>
+
+<div class="cv" id="cv">
+
+<div class="bg-top"></div>
+<div class="bg-left"></div>
+<div class="bg-right"></div>
+
+<div class="content">
+
+<div class="header">
+<div class="photo-box">
+<img id="cv-photo" src="default-profile.png">
+</div>
+<div>
+<h1 id="cv-name">YOUR NAME</h1>
+<h3 id="cv-title">Student</h3>
+</div>
+</div>
+
+<div class="main">
+
+<div class="left-section">
+<h2>PROFILE</h2>
+<p id="cv-profile"></p>
+
+<h2>CONTACT ME</h2>
+<p><i class="fa-solid fa-phone"></i> <span id="cv-phone"></span></p>
+<p><i class="fa-solid fa-envelope"></i> <span id="cv-email"></span></p>
+<p><i class="fa-solid fa-location-dot"></i> <span id="cv-address"></span></p>
+</div>
+
+<div class="right-section">
+
+<h2><i class="fa-solid fa-arrow-right"></i> EDUCATION</h2>
+<div id="cv-education"></div>
+
+<h2><i class="fa-solid fa-arrow-right"></i> LANGUAGE</h2>
+<ul id="cv-language"></ul>
+
+<h2><i class="fa-solid fa-arrow-right"></i> COMPUTER SKILLS</h2>
+<ul id="cv-skills"></ul>
+
+<h2><i class="fa-solid fa-arrow-right"></i> WORK EXPERIENCE</h2>
+<div id="cv-experience"></div>
+
+</div>
+
+</div>
+</div>
+</div>
+
+</div>
+
+<script src="script.js"></script>
+</body>
+</html>
