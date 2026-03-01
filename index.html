@@ -3,7 +3,9 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Modern Student CV Builder</title>
+<title>Premium Modern Student CV Builder</title>
+
+<link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;600;700&display=swap" rel="stylesheet">
 <link rel="stylesheet" href="style.css">
 <script src="https://cdnjs.cloudflare.com/ajax/libs/html2pdf.js/0.10.1/html2pdf.bundle.min.js"></script>
 </head>
@@ -13,7 +15,6 @@
 <div class="builder">
 
 <div class="form">
-
 <h2>Fill Your Information</h2>
 
 <input type="text" id="name" placeholder="Full Name">
@@ -22,34 +23,35 @@
 
 <textarea id="profile" placeholder="Profile Description"></textarea>
 
-<input type="text" id="phone" placeholder="Phone">
+<input type="text" id="phone" placeholder="Phone Number">
 <input type="email" id="email" placeholder="Email">
 <input type="text" id="address" placeholder="Address">
 
-<textarea id="education" placeholder="Education Details"></textarea>
-<textarea id="language" placeholder="Languages"></textarea>
+<textarea id="education" placeholder="Education"></textarea>
+<textarea id="language" placeholder="Language"></textarea>
 <textarea id="skills" placeholder="Computer Skills"></textarea>
 <textarea id="experience" placeholder="Work Experience"></textarea>
 
 <button onclick="generateCV()">Generate CV</button>
 <button onclick="downloadPDF()">Download PDF</button>
-
 </div>
 
 
 <div class="cv" id="cv">
 
-<div class="top">
-<div class="photo">
-<img id="cv-photo" src="https://via.placeholder.com/150">
+<div class="header">
+<div class="photo-box">
+<img id="cv-photo" src="https://via.placeholder.com/180">
 </div>
-<div class="top-text">
+
+<div class="header-text">
 <h1 id="cv-name">YOUR NAME</h1>
 <h3 id="cv-title">Student</h3>
 </div>
 </div>
 
-<div class="content">
+
+<div class="main">
 
 <div class="left">
 <h2>PROFILE</h2>
@@ -84,6 +86,5 @@
 </div>
 
 <script src="script.js"></script>
-
 </body>
 </html>
