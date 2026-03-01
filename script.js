@@ -1,39 +1,47 @@
 document.addEventListener("input",()=>{updateCV();saveData();});
 
 function updateCV(){
-document.getElementById("cv-name").textContent=name.value||"YOUR NAME";
-document.getElementById("cv-title").textContent=title.value||"Student";
-document.getElementById("cv-profile").textContent=profile.value;
-document.getElementById("cv-phone").textContent=phone.value;
-document.getElementById("cv-email").textContent=email.value;
-document.getElementById("cv-address").textContent=address.value;
 
+cvName.textContent=name.value||"YOUR NAME";
+cvTitle.textContent=title.value||"Student";
+cvProfile.textContent=profile.value;
+cvPhone.textContent=phone.value;
+cvEmail.textContent=email.value;
+cvAddress.textContent=address.value;
+
+// EDUCATION
 cvEducation.innerHTML="";
 document.querySelectorAll("#education-section .edu").forEach(e=>{
 if(e.children[0].value.trim())
 cvEducation.innerHTML+=`<p><strong>${e.children[0].value}</strong><br>${e.children[1].value}</p>`;
 });
 
+// LANGUAGE
 cvLanguage.innerHTML="";
 document.querySelectorAll("#language-section input").forEach(l=>{
 if(l.value.trim()) cvLanguage.innerHTML+=`<li>${l.value}</li>`;
 });
 
+// SKILLS
 cvSkills.innerHTML="";
 document.querySelectorAll("#skill-section input").forEach(s=>{
 if(s.value.trim()) cvSkills.innerHTML+=`<li>${s.value}</li>`;
 });
 
+// EXPERIENCE
 cvExperience.innerHTML="";
 document.querySelectorAll("#experience-section .exp").forEach(e=>{
 if(e.children[0].value.trim())
 cvExperience.innerHTML+=`<p><strong>${e.children[0].value}</strong><br>${e.children[1].value}</p>`;
 });
 
+// PHOTO
 const file=document.getElementById("photo").files[0];
-if(file){const reader=new FileReader();
+if(file){
+const reader=new FileReader();
 reader.onload=e=>{cvPhoto.src=e.target.result;}
-reader.readAsDataURL(file);}
+reader.readAsDataURL(file);
+}
 }
 
 function addEducation(){
@@ -79,8 +87,10 @@ updateCV();
 }
 
 function downloadPDF(){
-html2pdf().set({margin:0,filename:"Student_CV.pdf",
+html2pdf().set({
+margin:0,
+filename:"Student_CV.pdf",
 html2canvas:{scale:3},
-jsPDF:{unit:"mm",format:"a4",orientation:"portrait"}})
-.from(document.getElementById("cv")).save();
+jsPDF:{unit:"mm",format:"a4",orientation:"portrait"}
+}).from(document.getElementById("cv")).save();
 }
